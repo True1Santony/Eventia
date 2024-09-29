@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Eventia</string>
+    <string name="nombre">primer string</string>
 </resources>
