@@ -1,4 +1,4 @@
-package com.proyect.eventia;
+package com.proyect;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.proyect.eventia", appContext.getPackageName());
+        assertEquals("com.proyect", appContext.getPackageName());
     }
 }

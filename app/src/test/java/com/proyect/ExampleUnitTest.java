@@ -1,4 +1,4 @@
-package com.proyect.eventia;
+package com.proyect;
 
 import org.junit.Test;
 
