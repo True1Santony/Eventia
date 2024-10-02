@@ -40,9 +40,9 @@ public class SplashScreen extends AppCompatActivity {
 
         animation.start();
 
-        /*Creamos un manejador para que se inicie la activity main una vez termine la splash
-        Aquí hacemos que el ilo inicie la activity main y le decimos que tarde 1300ms
-        que es el tiempo que tarda la animación en completarse*/
+        //Creamos un manejador para que se inicie la activity main una vez termine la splash
+        //Aquí hacemos que el hilo inicie la activity main y le decimos que espere 1600ms
+        //para ello, que es el tiempo que tarda la animación en completarse
 
         new Handler().postDelayed(new Runnable()
         {
@@ -63,7 +63,7 @@ public class SplashScreen extends AppCompatActivity {
                 //Finalizamos la activity para que no vuelva a saltar
                 finish();
             }
-        }, 2120);
+        }, 1600);
 
     }
 }

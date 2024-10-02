@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Eventia</string>
+    <string name="config">Settings</string>
+    <string name="btn_events">Events</string>
+    <string name="btn_notes">Notes</string>
+
+    <string-array name="array_config">
+        <item name="colors">Colors</item>
+    </string-array>
+</resources>

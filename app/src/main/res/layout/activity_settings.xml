@@ -5,17 +5,15 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    tools:context=".SplashScreen">
+    tools:context=".Settings">
 
-    <!--Creamos un ImageView para que contenga nuestra animación-->
+    <!--Creamos un layout ListView, le ponemos un poco de margen superior e inferior-->
 
-    <ImageView android:id="@+id/ivsplash"
-        android:contentDescription="@string/app_name"
-        android:layout_width="300dp"
-        android:layout_height="353dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+    <ListView android:id="@+id/lv_settings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="30dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
