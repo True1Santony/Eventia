@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="true">
+
+    <!--Creamos una animación que coge los recursos de la propia app-->
+    <!--Le indicamos con el atributo oneshot que no se repita
+        por si la ejecución en el dispositivo tardase se demorase-->
+
+    <item android:drawable="@drawable/splash0" android:duration="70"/>
+    <item android:drawable="@drawable/splash1" android:duration="70"/>
+    <item android:drawable="@drawable/splash2" android:duration="70"/>
+    <item android:drawable="@drawable/splash3" android:duration="70"/>
+    <item android:drawable="@drawable/splash4" android:duration="70"/>
+    <item android:drawable="@drawable/splash5" android:duration="70"/>
+    <item android:drawable="@drawable/splash6" android:duration="70"/>
+    <item android:drawable="@drawable/splash7" android:duration="70"/>
+    <item android:drawable="@drawable/splash8" android:duration="70"/>
+    <item android:drawable="@drawable/splash8" android:duration="70"/>
+    <item android:drawable="@drawable/splash10" android:duration="70"/>
+    <item android:drawable="@drawable/splash11" android:duration="70"/>
+    <item android:drawable="@drawable/splash12" android:duration="70"/>
+    <item android:drawable="@drawable/splash13" android:duration="70"/>
+    <item android:drawable="@drawable/splash14" android:duration="70"/>
+    <item android:drawable="@drawable/splash15" android:duration="70"/>
+    <item android:drawable="@drawable/splash16" android:duration="70"/>
+    <item android:drawable="@drawable/splash17" android:duration="70"/>
+    <item android:drawable="@drawable/splash18" android:duration="70"/>
+    <item android:drawable="@drawable/splash19" android:duration="70"/>
+    <item android:drawable="@drawable/splash20" android:duration="70"/>
+    <item android:drawable="@drawable/splash21" android:duration="70"/>
+    <item android:drawable="@drawable/splash22" android:duration="70"/>
+    <item android:drawable="@drawable/logo_eventia" android:duration="300"/>
+
+</animation-list>
