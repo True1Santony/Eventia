@@ -7,6 +7,9 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <!--(yosef) he cambiado la disposición a unos images views para que funcioenen como botones
+    queda más vistoso y es más rápido para ir cambiando entre ellos-->
+
     <!--Creamos una toolbar para alojar el menú de opciones y el nombre de la app-->
 
     <androidx.appcompat.widget.Toolbar
@@ -15,64 +18,60 @@
         android:layout_height="?attr/actionBarSize"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="15dp"
         android:background="?attr/colorPrimary"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
-    <!--Creamos un linear layout para contener un reloj y un calendario-->
-
-    <LinearLayout android:id="@+id/ll_main"
+    <LinearLayout android:id="@+id/ll_fragments_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tb_main"
-        app:layout_constraintBottom_toTopOf="@id/btn_events"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintBottom_toTopOf="@id/ll_main2"/>
 
-        <DigitalClock android:id="@+id/dc_main"
-            android:layout_width="match_parent"
+    <!--Creamos botones de imagen para los distintos fragments-->
+
+    <androidx.constraintlayout.widget.ConstraintLayout android:id="@+id/ll_main2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="?attr/colorPrimary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <ImageView android:id="@+id/btn_events"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textSize="40sp"
-            android:layout_marginBottom="10dp"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btn_notas"
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/btn_events"/>
 
-        <CalendarView android:id="@+id/cv_main"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+        <ImageView android:id="@+id/btn_notas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/btn_events"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btn_vacio1"
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/btn_events"/>
 
-    </LinearLayout>
+        <!--hago un botón vacío para que podamos ir pensando que más implementar-->
 
-    <!--Creamos botos para distintas funciones-->
+        <ImageView android:id="@+id/btn_vacio1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/btn_events"
+            app:layout_constraintStart_toEndOf="@id/btn_notas"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="@string/btn_events"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <Button android:id="@+id/btn_events"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ll_main"
-        app:layout_constraintBottom_toTopOf="@id/btn_notas"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:text="@string/btn_events"/>
 
-    <Button android:id="@+id/btn_notas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_events"
-        app:layout_constraintBottom_toTopOf="@id/btn_vacio1"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:text="@string/btn_events"/>
-
-    <!--hago un botón vacío para que podamos ir pensando que más implementar-->
-
-    <Button android:id="@+id/btn_vacio1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_notas"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:text="@string/btn_events"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,13 +9,16 @@ import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
-public class SplashScreen extends AppCompatActivity {
+public class Splash extends AppCompatActivity {
 
     //Declaro un ImageView y un AnimationDrawable como variables de clase
 
-    ImageView ivSplash;
-    AnimationDrawable animation;
+    public ImageView ivSplash;
+    public AnimationDrawable animation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -24,6 +27,11 @@ public class SplashScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_splash_screen);
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
 
         //Se fuerza a la aplicación a mostrarse en vertical
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
@@ -55,7 +63,7 @@ public class SplashScreen extends AppCompatActivity {
 
                 //Creamos un intent que será la activity main pasandole el contexto de la splash
                 //y la activity que va a ser
-                Intent i = new Intent(SplashScreen.this, MainActivity.class);
+                Intent i = new Intent(Splash.this, MainActivity.class);
 
                 //Iniciamos la activity
                 startActivity(i);
