@@ -3,6 +3,7 @@
     <string name="config">Configuración</string>
     <string name="btn_events">Eventos</string>
     <string name="btn_notes">Notas</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string-array name="array_config">
         <item name="colors">Colores</item>
