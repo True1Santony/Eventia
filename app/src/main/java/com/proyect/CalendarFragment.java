@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CalendarView;
+import android.widget.Toast;
 
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
@@ -88,7 +89,7 @@ public class CalendarFragment extends Fragment {
                 Date date = new Date(TimeUnit.SECONDS.toMillis(calendarView.getDate()));
 
                 //*--Comentario--*(hago un toast para ir probando)
-                //Toast.makeText(getApplicationContext(), date.toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(view.getContext(), date.toString(), Toast.LENGTH_SHORT).show();
             }
         });
     }

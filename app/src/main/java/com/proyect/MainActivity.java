@@ -18,6 +18,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+
 /*
 * Creamos MainActivity con implementación de View.OnClickListener para mejorar la gestión del
 * método onClick
@@ -30,6 +32,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ImageView ivCalendar;
     ImageView ivToday;
     ImageView ivNotes;
+
+    ArrayList<String> arrayToday;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -53,15 +57,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         //Inicializamos los imageview que funcionarán como botones
         ivCalendar = findViewById(R.id.btn_events);
-        ivToday = findViewById(R.id.btn_vacio1);
+        ivToday = findViewById(R.id.btn_today);
         ivNotes = findViewById(R.id.btn_notas);
 
         //les ponemos como recurso una imagen
         //(yosef) he cargado más en el proyecto pero no he tenidotiempo para cambiar el tamaño a todas
         //lo haré el proximo que pueda dedicarle tiempo
         ivCalendar.setBackgroundResource(R.drawable.btn_calendar_colored80x80);
-        ivToday.setBackgroundResource(R.drawable.btn_calendar_colored80x80);
-        ivNotes.setBackgroundResource(R.drawable.btn_calendar_colored80x80);
+        ivToday.setBackgroundResource(R.drawable.btn_today_nocolor80x80);
+        ivNotes.setBackgroundResource(R.drawable.btn_notes_nocolor80x80);
 
         //Declaramos un fragment y su manager para ser el principal al abrir la app
         //que será el fragment de calendario
@@ -75,11 +79,68 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ivCalendar.setOnClickListener(this);
         ivToday.setOnClickListener(this);
         ivNotes.setOnClickListener(this);
+
+        arrayToday = new ArrayList<String>();
     }
 
     /*
-    * Realizamos un override de los métodos necesarios para crear el menú
+     * Orverrideamos el método onClick para dar funcionalidad a los iv que funcionan como botones
+     *
     */
+
+    @Override
+    public void onClick(View view)
+    {
+        //Creamos un fragment
+        Fragment fragment;
+
+        //Creamos un bundle para pasar datos desde la main
+        Bundle bundle = new Bundle();
+
+        //Pasamos al bundle un Arraylist de String
+        bundle.putStringArrayList("arrayToday", arrayToday);
+
+        //Dependiendo del botón que pulsemos inicializamos el fragment correspondiente
+        //y se cambia el color de los botones
+        if (view.getId()==R.id.btn_today)
+        {
+            fragment = new TodayFragment();
+
+            ivCalendar.setBackgroundResource(R.drawable.btn_calendar_nocolor80x80);
+            ivToday.setBackgroundResource(R.drawable.btn_today_colored80x80);
+            ivNotes.setBackgroundResource(R.drawable.btn_notes_nocolor80x80);
+
+        }
+        else if (view.getId()==R.id.btn_notas)
+        {
+            fragment = new NotesFragment();
+
+            ivCalendar.setBackgroundResource(R.drawable.btn_calendar_nocolor80x80);
+            ivToday.setBackgroundResource(R.drawable.btn_today_nocolor80x80);
+            ivNotes.setBackgroundResource(R.drawable.btn_notes_colored80x80);
+        }
+        else
+        {
+            fragment = new CalendarFragment();
+
+            ivCalendar.setBackgroundResource(R.drawable.btn_calendar_colored80x80);
+            ivToday.setBackgroundResource(R.drawable.btn_today_nocolor80x80);
+            ivNotes.setBackgroundResource(R.drawable.btn_notes_nocolor80x80);
+        }
+
+        //Le pasamos como argumentos al fragment nuestro bundle
+        fragment.setArguments(bundle);
+
+        //Hacemos la transición del fagment actual al nuevo fragment
+        FragmentTransaction fragmentTransaction = this.getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.ll_fragments_main, fragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+    }
+
+    /*
+     * Realizamos un override de los métodos necesarios para crear el menú
+     */
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
@@ -119,37 +180,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return true;
     }
 
-    /*
-    * Orverrideamos el método onClick para dar funcionalidad a los iv que funcionan como botones
-    *
-    * */
+
+
     @Override
-    public void onClick(View view)
+    protected void onDestroy()
     {
-        //Creamos un fragment
-        Fragment fragment;
-
-        //Dependiendo del botón que pulsemos inicializamos el fragment correspondiente
-        if (view.getId()==R.id.btn_notas)
-        {
-            fragment = new NotesFragment();
-        }
-        else if (view.getId()==R.id.btn_vacio1)
-        {
-            fragment = new TodayFragment();
-        }
-        else
-        {
-            fragment = new CalendarFragment();
-        }
-
-        //Hacemos la transición del fagment actual al nuevo fragment
-        FragmentTransaction fragmentTransaction = this.getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.ll_fragments_main, fragment);
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commit();
+        super.onDestroy();
     }
-
-
-
 }
